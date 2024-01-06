@@ -14,98 +14,97 @@ struct ListView: View {
     @State private var addNewItem: Bool = false
     
     var body: some View {
-        
-        ZStack {
-            
-            Color.theme.background.ignoresSafeArea()
-            
-            VStack {
+        NavigationView {
+            ZStack {
+                Color.theme.background.ignoresSafeArea()
                 
-                Text("Edeka")
-                    .font(.largeTitle)
-                
-                Spacer()
-                
-                HStack {
-                    Image(systemName: "basket")
-                    ProgressView(value: progressFraction)
-                    Text("\(checkedItemCount)/\(totalItemCount)")
-                }
-                .padding()
-                
-                Spacer()
-                
-                List {
-                    ForEach(listViewModel.items.filter { !$0.isChecked }) { item in
-                        ListRowView(item: item)
-                            .listRowSeparator(.hidden)
-                            .listRowBackground(Color.theme.background)
-                            .swipeActions(allowsFullSwipe: false) {
-                                Button {
-                                    print("Not available")
-                                } label: {
-                                    Label("Not available", systemImage: "minus.circle")
-                                }
-                                .tint(.orange)
-                                Button(role: .destructive) {
-                                    withAnimation {
-                                        listViewModel.deleteItem(item: item)
-                                    }
-                                } label: {
-                                    Label("Delete", systemImage: "trash.circle")
-                                }
-                            }
-                            .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                                Button {
-                                    withAnimation {
-                                        listViewModel.toggleItemChecked(item: item)
-                                    }
-                                } label: {
-                                    Label("Check", systemImage: "checkmark.circle")
-                                }
-                                .tint(.green)
-                            }
-                    }
+                VStack {
+                    Spacer()
                     
-                    Section(header: Text("Checked Items")) {
-                        ForEach(listViewModel.items.filter { $0.isChecked } ) { item in
+                    HStack {
+                        Image(systemName: "basket")
+                        ProgressView(value: progressFraction)
+                        Text("\(checkedItemCount)/\(totalItemCount)")
+                    }
+                    .padding()
+                    
+                    Spacer()
+                    
+                    List {
+                        ForEach(listViewModel.items.filter { !$0.isChecked }) { item in
                             ListRowView(item: item)
                                 .listRowSeparator(.hidden)
                                 .listRowBackground(Color.theme.background)
-                                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                .swipeActions(allowsFullSwipe: false) {
                                     Button {
-                                        withAnimation {
-                                            listViewModel.toggleItemChecked(item: item)
-                                        }
+                                        print("Not available")
                                     } label: {
-                                        Label("Uncheck", systemImage: "arrow.uturn.backward.circle")
+                                        Label("Not available", systemImage: "minus.circle")
                                     }
-                                    .tint(.yellow)
-                                }
-                                .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                                    Button {
+                                    .tint(.orange)
+                                    Button(role: .destructive) {
                                         withAnimation {
                                             listViewModel.deleteItem(item: item)
                                         }
                                     } label: {
                                         Label("Delete", systemImage: "trash.circle")
                                     }
-                                    .tint(.red)
+                                }
+                                .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                                    Button {
+                                        withAnimation {
+                                            listViewModel.toggleItemChecked(item: item)
+                                        }
+                                    } label: {
+                                        Label("Check", systemImage: "checkmark.circle")
+                                    }
+                                    .tint(.green)
                                 }
                         }
+                        
+                        Section(header: Text("Checked Items")) {
+                            ForEach(listViewModel.items.filter { $0.isChecked } ) { item in
+                                ListRowView(item: item)
+                                    .listRowSeparator(.hidden)
+                                    .listRowBackground(Color.theme.background)
+                                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                        Button {
+                                            withAnimation {
+                                                listViewModel.toggleItemChecked(item: item)
+                                            }
+                                        } label: {
+                                            Label("Uncheck", systemImage: "arrow.uturn.backward.circle")
+                                        }
+                                        .tint(.yellow)
+                                    }
+                                    .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                                        Button {
+                                            withAnimation {
+                                                listViewModel.deleteItem(item: item)
+                                            }
+                                        } label: {
+                                            Label("Delete", systemImage: "trash.circle")
+                                        }
+                                        .tint(.red)
+                                    }
+                            }
+                        }
                     }
+                    .listStyle(PlainListStyle())
+                    
+                    Spacer()
                 }
-                .listStyle(PlainListStyle())
-                Spacer()
+                
+                VStack {
+                    Spacer()
+                    addButton
+                }
             }
-            
-            VStack {
-                Spacer()
-                addButton
-            }
+            .navigationTitle("Edeka") // Titel für die Navigationsleiste
         }
-        
+        .navigationViewStyle(StackNavigationViewStyle())
     }
+    
     
     private var addButton: some View {
         HStack {
