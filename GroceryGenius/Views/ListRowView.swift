@@ -25,9 +25,8 @@ struct ListRowView: View {
                 }
                 .padding(.trailing, 7)
                 .padding(.vertical, 7)
-                .foregroundColor(colorScheme == .dark ? .white : .black)
             }
-            .background(Color.theme.card)
+            .background(item.isChecked ? Color.gray : Color.theme.card)
             .cornerRadius(10)
         }
     }
@@ -51,6 +50,7 @@ struct ListRowView: View {
     private var itemNameView: some View {
         Text(item.name)
             .font(.headline)
+            .strikethrough(item.isChecked, color: item.isChecked ? Color.black : .none)
             .frame(alignment: .leading)
     }
 
