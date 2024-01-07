@@ -21,12 +21,27 @@ struct ListView: View {
                 VStack {
                     Spacer()
                     
-                    HStack {
-                        Image(systemName: "basket")
-                        ProgressView(value: progressFraction)
-                        Text("\(checkedItemCount)/\(totalItemCount)")
+                    VStack(alignment: .leading) {
+                        Text("Shopping progress")
+                            .font(.caption2)
+                            .fontWeight(.medium)
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 0)
+                        HStack {
+                            Group {
+                                Image(systemName: "basket")
+                                ProgressView(value: progressFraction)
+                                Text("\(checkedItemCount)/\(totalItemCount)")
+                            }
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 8)
+                        }
+                        .frame(width: .infinity)
+                        .background(.card)
+                        .cornerRadius(10)
+                        .padding(.horizontal, 20)
                     }
-                    .padding()
+                    
                     
                     Spacer()
                     
