@@ -77,31 +77,33 @@ struct ListView: View {
                                 }
                         }
                         
-                        Section(header: Text("Checked Items")) {
-                            ForEach(listViewModel.items.filter { $0.isChecked } ) { item in
-                                ListRowView(item: item)
-                                    .listRowSeparator(.hidden)
-                                    .listRowBackground(Color.theme.background)
-                                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                                        Button {
-                                            withAnimation {
-                                                listViewModel.toggleItemChecked(item: item)
+                        if checkedItemCount > 0 {
+                            Section(header: Text("Checked Items")) {
+                                ForEach(listViewModel.items.filter { $0.isChecked } ) { item in
+                                    ListRowView(item: item)
+                                        .listRowSeparator(.hidden)
+                                        .listRowBackground(Color.theme.background)
+                                        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                            Button {
+                                                withAnimation {
+                                                    listViewModel.toggleItemChecked(item: item)
+                                                }
+                                            } label: {
+                                                Label("Uncheck", systemImage: "arrow.uturn.backward.circle")
                                             }
-                                        } label: {
-                                            Label("Uncheck", systemImage: "arrow.uturn.backward.circle")
+                                            .tint(.yellow)
                                         }
-                                        .tint(.yellow)
-                                    }
-                                    .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                                        Button {
-                                            withAnimation {
-                                                listViewModel.deleteItem(item: item)
+                                        .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                                            Button {
+                                                withAnimation {
+                                                    listViewModel.deleteItem(item: item)
+                                                }
+                                            } label: {
+                                                Label("Delete", systemImage: "trash.circle")
                                             }
-                                        } label: {
-                                            Label("Delete", systemImage: "trash.circle")
+                                            .tint(.red)
                                         }
-                                        .tint(.red)
-                                    }
+                                }
                             }
                         }
                     }
