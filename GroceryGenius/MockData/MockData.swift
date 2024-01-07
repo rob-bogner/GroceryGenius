@@ -66,6 +66,27 @@ struct MockData {
             units: 1,
             measure: "Pkg.",
             price: 3.89, isChecked: false
+        ),
+        ItemModel(
+            image: "Cola Zero",
+            name: "Cola Zero",
+            units: 1,
+            measure: "Pkg.",
+            price: 3.89, isChecked: false
+        ),
+        ItemModel(
+            image: "Salat",
+            name: "Salat",
+            units: 1,
+            measure: "Stk.",
+            price: 1.39, isChecked: false
+        ),
+        ItemModel(
+            image: "Lachs",
+            name: "Lachs",
+            units: 400,
+            measure: "g.",
+            price: 13.89, isChecked: false
         )
     ]
 }

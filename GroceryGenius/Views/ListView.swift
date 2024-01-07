@@ -36,8 +36,8 @@ struct ListView: View {
                             .padding(.horizontal, 8)
                             .padding(.vertical, 8)
                         }
-                        .frame(width: .infinity)
-                        .background(.card)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.theme.card)
                         .cornerRadius(10)
                         .padding(.horizontal, 20)
                     }
