@@ -118,6 +118,7 @@ struct ListView: View {
                 }
             }
             .navigationTitle("Edeka") // Titel für die Navigationsleiste
+            .transition(.asymmetric(insertion: .opacity.combined(with: .move(edge: .leading)), removal: .opacity.combined(with: .move(edge: .trailing))))
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
