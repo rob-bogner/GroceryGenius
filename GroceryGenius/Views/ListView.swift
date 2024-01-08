@@ -18,39 +18,10 @@ struct ListView: View {
             ZStack {
                 Color.theme.background.ignoresSafeArea()
                 
-                VStack {
+                VStack(spacing: 0) {
                     Spacer()
-                    
-                    VStack(alignment: .leading) {
-                        Text("Shopping progress")
-                            .font(.caption2)
-                            .fontWeight(.medium)
-                            .padding(.horizontal, 20)
-                            .padding(.vertical, 0)
-                        HStack {
-                            Group {
-                                Image(systemName: "basket")
-                                ProgressView(value: progressFraction)
-                                Text("\(checkedItemCount)/\(totalItemCount)")
-                            }
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 8)
-                        }
-                        .frame(maxWidth: .infinity)
-                        .background(Color.theme.card)
-                        .cornerRadius(10)
-                        .padding(.horizontal, 20)
-                    }
-                    
-                    
-                    Spacer()
-                    
-                    List {
-                        uncheckedItemsSection
-                        checkedItemsSection
-                    }
-                    .listStyle(PlainListStyle())
-                    
+                    shoppingListProgressView
+                    listView
                     Spacer()
                 }
                 
@@ -63,6 +34,37 @@ struct ListView: View {
             .transition(.asymmetric(insertion: .opacity.combined(with: .move(edge: .leading)), removal: .opacity.combined(with: .move(edge: .trailing))))
         }
         .navigationViewStyle(StackNavigationViewStyle())
+    }
+    
+    private var shoppingListProgressView: some View {
+        VStack(alignment: .leading) {
+            Text("Shopping progress")
+                .font(.caption2)
+                .fontWeight(.medium)
+                .padding(.horizontal, 20)
+                .padding(.vertical, 0)
+            HStack {
+                Group {
+                    Image(systemName: "basket")
+                    ProgressView(value: progressFraction)
+                    Text("\(checkedItemCount)/\(totalItemCount)")
+                }
+                .padding(.horizontal, 8)
+                .padding(.vertical, 8)
+            }
+            .frame(maxWidth: .infinity)
+            .background(Color.theme.card)
+            .cornerRadius(10)
+            .padding(.horizontal, 20)
+        }
+    }
+    
+    private var listView: some View {
+        List {
+            uncheckedItemsSection
+            checkedItemsSection
+        }
+        .listStyle(PlainListStyle())
     }
     
     private var uncheckedItemsSection: some View {
