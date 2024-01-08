@@ -11,7 +11,7 @@ import SwiftUI
 struct GroceryGeniusApp: App {
     var body: some Scene {
         WindowGroup {
-            ListView()
+            ShoppingListView()
                 .environmentObject(ListViewModel())
         }
     }

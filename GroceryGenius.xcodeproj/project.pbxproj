@@ -10,13 +10,15 @@
 		EE6115E82B4467070043736A /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6115E72B4467070043736A /* ListViewModel.swift */; };
 		EE6115EB2B48440E0043736A /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6115EA2B48440E0043736A /* Color.swift */; };
 		EE69A4E62B14CB78007C3515 /* GroceryGeniusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE69A4E52B14CB78007C3515 /* GroceryGeniusApp.swift */; };
-		EE69A4E82B14CB78007C3515 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE69A4E72B14CB78007C3515 /* ListView.swift */; };
+		EE69A4E82B14CB78007C3515 /* ShoppingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE69A4E72B14CB78007C3515 /* ShoppingListView.swift */; };
 		EE69A4EA2B14CB79007C3515 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE69A4E92B14CB79007C3515 /* Assets.xcassets */; };
 		EE69A4ED2B14CB79007C3515 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE69A4EC2B14CB79007C3515 /* Preview Assets.xcassets */; };
 		EE69A4F82B14CC96007C3515 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE69A4F72B14CC96007C3515 /* ItemModel.swift */; };
 		EE69A4FA2B14CCED007C3515 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE69A4F92B14CCED007C3515 /* MockData.swift */; };
 		EE69A4FE2B14F046007C3515 /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE69A4FD2B14F046007C3515 /* ListRowView.swift */; };
 		EE7872312B1E3ED600FDD00B /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7872302B1E3ED600FDD00B /* AddItemView.swift */; };
+		EEF472FC2B4C5A4100330CE5 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF472FB2B4C5A4100330CE5 /* ListView.swift */; };
+		EEF472FE2B4C5C2000330CE5 /* ShoppingListProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF472FD2B4C5C2000330CE5 /* ShoppingListProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,13 +26,15 @@
 		EE6115EA2B48440E0043736A /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		EE69A4E22B14CB78007C3515 /* GroceryGenius.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryGenius.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE69A4E52B14CB78007C3515 /* GroceryGeniusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryGeniusApp.swift; sourceTree = "<group>"; };
-		EE69A4E72B14CB78007C3515 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		EE69A4E72B14CB78007C3515 /* ShoppingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListView.swift; sourceTree = "<group>"; };
 		EE69A4E92B14CB79007C3515 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE69A4EC2B14CB79007C3515 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EE69A4F72B14CC96007C3515 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		EE69A4F92B14CCED007C3515 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		EE69A4FD2B14F046007C3515 /* ListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		EE7872302B1E3ED600FDD00B /* AddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
+		EEF472FB2B4C5A4100330CE5 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		EEF472FD2B4C5C2000330CE5 /* ShoppingListProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +59,10 @@
 		EE25EDBD2B40700500CA090C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				EE69A4E72B14CB78007C3515 /* ListView.swift */,
+				EE69A4E72B14CB78007C3515 /* ShoppingListView.swift */,
+				EEF472FB2B4C5A4100330CE5 /* ListView.swift */,
 				EE69A4FD2B14F046007C3515 /* ListRowView.swift */,
+				EEF472FD2B4C5C2000330CE5 /* ShoppingListProgressView.swift */,
 				EE7872302B1E3ED600FDD00B /* AddItemView.swift */,
 			);
 			path = Views;
@@ -198,11 +204,13 @@
 				EE69A4F82B14CC96007C3515 /* ItemModel.swift in Sources */,
 				EE69A4FA2B14CCED007C3515 /* MockData.swift in Sources */,
 				EE7872312B1E3ED600FDD00B /* AddItemView.swift in Sources */,
-				EE69A4E82B14CB78007C3515 /* ListView.swift in Sources */,
+				EEF472FE2B4C5C2000330CE5 /* ShoppingListProgressView.swift in Sources */,
+				EE69A4E82B14CB78007C3515 /* ShoppingListView.swift in Sources */,
 				EE69A4FE2B14F046007C3515 /* ListRowView.swift in Sources */,
 				EE69A4E62B14CB78007C3515 /* GroceryGeniusApp.swift in Sources */,
 				EE6115E82B4467070043736A /* ListViewModel.swift in Sources */,
 				EE6115EB2B48440E0043736A /* Color.swift in Sources */,
+				EEF472FC2B4C5A4100330CE5 /* ListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,66 +1,17 @@
 //
 //  ListView.swift
-//  Grocery Genius
+//  GroceryGenius
 //
-//  Created by Robert Bogner on 27.11.23.
+//  Created by Robert Bogner on 08.01.24.
 //
 
 import SwiftUI
 
 struct ListView: View {
     
-    @Environment(\.colorScheme) var colorScheme
-    @EnvironmentObject var listViewModel: ListViewModel
-    @State private var addNewItem: Bool = false
+    @ObservedObject var listViewModel: ListViewModel
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                Color.theme.background.ignoresSafeArea()
-                
-                VStack(spacing: 0) {
-                    Spacer()
-                    shoppingListProgressView
-                    Spacer()
-                    listView
-                    Spacer()
-                }
-                
-                VStack {
-                    Spacer()
-                    addButton
-                }
-            }
-            .navigationTitle("Edeka") // Titel für die Navigationsleiste
-            .transition(.asymmetric(insertion: .opacity.combined(with: .move(edge: .leading)), removal: .opacity.combined(with: .move(edge: .trailing))))
-        }
-        .navigationViewStyle(StackNavigationViewStyle())
-    }
-    
-    private var shoppingListProgressView: some View {
-        VStack(alignment: .leading) {
-            Text("Shopping progress")
-                .font(.caption2)
-                .fontWeight(.medium)
-                .padding(.horizontal, 20)
-                .padding(.vertical, 0)
-            HStack {
-                Group {
-                    Image(systemName: "basket")
-                    ProgressView(value: listViewModel.progressFaction)
-                    Text("\(listViewModel.checkedItemCount)/\(listViewModel.totalItemCount)")
-                }
-                .padding(.horizontal, 8)
-                .padding(.vertical, 8)
-            }
-            .frame(maxWidth: .infinity)
-            .background(Color.theme.card)
-            .cornerRadius(10)
-            .padding(.horizontal, 20)
-        }
-    }
-    
-    private var listView: some View {
         List {
             uncheckedItemsSection
             checkedItemsSection
@@ -136,34 +87,8 @@ struct ListView: View {
             }
         }
     }
-    
-    private var addButton: some View {
-        HStack {
-            Spacer()
-            Button(action: {
-                addNewItem.toggle()
-                print("pressed")
-            }, label: {
-                Image(systemName: "plus.circle.fill")
-                    .font(.system(size: 45))
-                    .foregroundStyle(
-                        Color.theme.buttonIconColor,
-                        Color.theme.buttonFillColor
-                    )
-                    .shadow(color: Color.theme.shadow, radius: 10)
-            })
-            .padding(.trailing, 20)
-            .padding(.bottom, 20)
-            .sheet(isPresented: $addNewItem, content: {
-                AddItemView()
-                    .presentationDetents([.height(160)])
-                    .presentationCornerRadius(15)
-            })
-        }
-    }
 }
 
 #Preview {
-    ListView()
-        .environmentObject(ListViewModel())
+    ListView(listViewModel: ListViewModel())
 }
