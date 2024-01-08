@@ -26,7 +26,8 @@ struct ListRowView: View {
                 .padding(.trailing, 7)
                 .padding(.vertical, 7)
             }
-            .background(item.isChecked ? Color.gray : Color.theme.card)
+            .background(item.isChecked ? Color.theme.buttonFillColor : Color.theme.card)
+            .opacity(item.isChecked ? 0.5 : 1)
             .cornerRadius(10)
         }
     }
