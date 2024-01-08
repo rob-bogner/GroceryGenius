@@ -21,6 +21,7 @@ struct ListView: View {
                 VStack(spacing: 0) {
                     Spacer()
                     shoppingListProgressView
+                    Spacer()
                     listView
                     Spacer()
                 }
@@ -46,8 +47,8 @@ struct ListView: View {
             HStack {
                 Group {
                     Image(systemName: "basket")
-                    ProgressView(value: progressFraction)
-                    Text("\(checkedItemCount)/\(totalItemCount)")
+                    ProgressView(value: listViewModel.progressFaction)
+                    Text("\(listViewModel.checkedItemCount)/\(listViewModel.totalItemCount)")
                 }
                 .padding(.horizontal, 8)
                 .padding(.vertical, 8)
@@ -102,7 +103,7 @@ struct ListView: View {
     
     private var checkedItemsSection: some View {
         Group {
-            if checkedItemCount > 0 {
+            if listViewModel.checkedItemCount > 0 {
                 Section(header: Text("Checked Items")) {
                     ForEach(listViewModel.items.filter { $0.isChecked } ) { item in
                         ListRowView(item: item)
@@ -159,18 +160,6 @@ struct ListView: View {
                     .presentationCornerRadius(15)
             })
         }
-    }
-    
-    private var progressFraction: Double {
-        return totalItemCount > 0 ? Double(checkedItemCount) / Double(totalItemCount) : 0
-    }
-    
-    private var totalItemCount: Int {
-        listViewModel.items.count
-    }
-    
-    private var checkedItemCount: Int {
-        listViewModel.items.filter({ $0.isChecked }).count
     }
 }
 

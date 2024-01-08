@@ -15,6 +15,18 @@ class ListViewModel: ObservableObject {
         getItems()
     }
     
+    var totalItemCount: Int {
+        items.count
+    }
+    
+    var checkedItemCount: Int {
+        items.filter({ $0.isChecked }).count
+    }
+    
+    var progressFaction: Double {
+        totalItemCount > 0 ? Double(checkedItemCount) / Double(totalItemCount) : 0
+    }
+    
     func getItems()  {
         items.append(contentsOf: MockData.items)
     }
