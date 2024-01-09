@@ -1,39 +1,43 @@
-//
-//  ListView.swift
-//  GroceryGenius
-//
-//  Created by Robert Bogner on 08.01.24.
-//
+/*
+GroceryGenius
+ListView.swift
+Created by Robert Bogner on 08.01.24.
+
+Presents a detailed view of the items list, allowing interaction through swipe actions.
+*/
 
 import SwiftUI
 
+/// A view for displaying the list of items, both checked and unchecked.
 struct ListView: View {
     
-    @ObservedObject var listViewModel: ListViewModel
+    @ObservedObject var listViewModel: ListViewModel // ViewModel providing the data and logic for the list.
     
     var body: some View {
         List {
-            uncheckedItemsSection
-            checkedItemsSection
+            uncheckedItemsSection // Section displaying items that are not checked.
+            checkedItemsSection // Section displaying items that are checked.
         }
-        .listStyle(PlainListStyle())
+        .listStyle(PlainListStyle()) // Sets the style of the list.
     }
     
+    /// Section displaying unchecked items.
+    /// Iterates through items that are not checked and presents them using `ListRowView`.
     private var uncheckedItemsSection: some View {
         ForEach(listViewModel.items.filter { !$0.isChecked }) { item in
-            ListRowView(item: item)
-                .listRowSeparator(.hidden)
-                .listRowBackground(Color.theme.background)
+            ListRowView(item: item) // View for displaying a single list item.
+                .listRowSeparator(.hidden) // Hides the row separator.
+                .listRowBackground(Color.theme.background) // Sets the background color for the row.
                 .swipeActions(allowsFullSwipe: false) {
                     Button {
-                        print("Not available")
+                        print("Not available") // Placeholder action. Update as needed.
                     } label: {
                         Label("Not available", systemImage: "minus.circle")
                     }
                     .tint(.orange)
                     Button(role: .destructive) {
                         withAnimation {
-                            listViewModel.deleteItem(item: item)
+                            listViewModel.deleteItem(item: item) // Deletes the item from the list.
                         }
                     } label: {
                         Label("Delete", systemImage: "trash.circle")
@@ -42,7 +46,7 @@ struct ListView: View {
                 .swipeActions(edge: .leading, allowsFullSwipe: true) {
                     Button {
                         withAnimation {
-                            listViewModel.toggleItemChecked(item: item)
+                            listViewModel.toggleItemChecked(item: item) // Toggles the checked status of the item.
                         }
                     } label: {
                         Label("Check", systemImage: "checkmark.circle")
@@ -52,12 +56,14 @@ struct ListView: View {
         }
     }
     
+    /// Section displaying checked items.
+    /// Only shown if there are checked items in the list.
     private var checkedItemsSection: some View {
         Group {
             if listViewModel.checkedItemCount > 0 {
-                Section(header: Text("Checked Items")) {
-                    ForEach(listViewModel.items.filter { $0.isChecked } ) { item in
-                        ListRowView(item: item)
+                Section(header: Text("Checked Items")) { // Header for the checked items section.
+                    ForEach(listViewModel.items.filter { $0.isChecked }) { item in
+                        ListRowView(item: item) // View for displaying a single checked list item.
                             .listRowSeparator(.hidden)
                             .listRowBackground(Color.theme.background)
                             .swipeActions(edge: .trailing, allowsFullSwipe: true) {
@@ -83,12 +89,12 @@ struct ListView: View {
                     }
                 }
             } else {
-                EmptyView()
+                EmptyView() // Displays nothing if there are no checked items.
             }
         }
     }
 }
 
 #Preview {
-    ListView(listViewModel: ListViewModel())
+    ListView(listViewModel: ListViewModel()) // Preview setup with a ListViewModel.
 }

@@ -1,14 +1,17 @@
-//
-//  MockData.swift
-//  GroceryGenius
-//
-//  Created by Robert Bogner on 27.11.23.
-//
+/*
+GroceryGenius
+MockData.swift
+Created by Robert Bogner on 27.11.23.
+
+Provides mock data for the Grocery Genius app, useful for development and testing purposes.
+*/
 
 import Foundation
 
+/// Struct to hold mock data for the application.
 struct MockData {
     
+    /// A sample item used for previews or testing.
     static let sampleItem: ItemModel = ItemModel(
         image: "Milch",
         name: "Milch",
@@ -17,6 +20,8 @@ struct MockData {
         price: 1.59, isChecked: false
     )
     
+    /// An array of `ItemModel` representing a list of items.
+    /// This mock data can be used for development and testing, providing a way to work with sample data.
     static var items = [
         ItemModel(
             image: "Milch",
