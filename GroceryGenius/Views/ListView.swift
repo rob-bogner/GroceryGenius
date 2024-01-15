@@ -12,13 +12,20 @@ import SwiftUI
 struct ListView: View {
     
     @ObservedObject var listViewModel: ListViewModel // ViewModel providing the data and logic for the list.
-    
+    @State private var showEditItemView: Bool = false // 1
+
     var body: some View {
         List {
             uncheckedItemsSection // Section displaying items that are not checked.
             checkedItemsSection // Section displaying items that are checked.
         }
         .listStyle(PlainListStyle()) // Sets the style of the list.
+        .sheet(isPresented: $showEditItemView) {
+            if let selectedItem = listViewModel.selectedItem {
+                EditItemView(item: selectedItem)
+                    .environmentObject(listViewModel)
+            }
+        }
     }
     
     /// Section displaying unchecked items.
@@ -35,6 +42,11 @@ struct ListView: View {
                         Label("Not available", systemImage: "minus.circle")
                     }
                     .tint(.orange)
+                    Button("Edit", systemImage: "pencil.circle") {
+                        listViewModel.selectedItem = item
+                        showEditItemView = true
+                    }
+                    .tint(.blue)
                     Button(role: .destructive) {
                         withAnimation {
                             listViewModel.deleteItem(item: item) // Deletes the item from the list.

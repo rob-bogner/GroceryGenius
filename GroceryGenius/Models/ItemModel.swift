@@ -15,19 +15,19 @@ struct ItemModel: Hashable, Identifiable {
     let id: String
 
     // Optional property for an image reference, e.g., a filename or URL string.
-    let image: String?
+    private(set) var image: String?
 
     // The name of the item, e.g., "Milk".
-    let name: String
+    private(set) var  name: String
 
     // Optional property representing the number of units for the item, e.g., 3.
-    let units: Int?
+    private(set) var  units: Int?
 
     // Optional property for the measurement unit, e.g., "Liters".
-    let measure: String?
+    private(set) var  measure: String?
 
     // Optional property representing the price of the item.
-    let price: Double?
+    private(set) var  price: Double?
 
     // Boolean flag indicating whether the item has been checked off in the list.
     let isChecked: Bool
@@ -51,5 +51,9 @@ struct ItemModel: Hashable, Identifiable {
     /// - Returns: A new `ItemModel` instance with the `isChecked` state inverted.
     func updateCompletion() -> ItemModel {
         return ItemModel(id: id, image: image, name: name, units: units, measure: measure, price: price, isChecked: !isChecked)
+    }
+    
+    mutating func updateItem(newImage: String?, newName: String, newUnits: Int?, newMeasure: String?, newPrice: Double?, newIsChecked: Bool) -> ItemModel {
+        return ItemModel(image: newImage, name: newName, units: newUnits, measure: newMeasure, price: newPrice, isChecked: newIsChecked)
     }
 }

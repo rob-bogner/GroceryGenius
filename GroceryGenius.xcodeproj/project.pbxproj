@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE4B8CD22B52BD0B006FBBED /* EditItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4B8CD12B52BD0B006FBBED /* EditItemView.swift */; };
 		EE6115E82B4467070043736A /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6115E72B4467070043736A /* ListViewModel.swift */; };
 		EE6115EB2B48440E0043736A /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6115EA2B48440E0043736A /* Color.swift */; };
 		EE69A4E62B14CB78007C3515 /* GroceryGeniusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE69A4E52B14CB78007C3515 /* GroceryGeniusApp.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EE4B8CD12B52BD0B006FBBED /* EditItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemView.swift; sourceTree = "<group>"; };
 		EE6115E72B4467070043736A /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		EE6115EA2B48440E0043736A /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		EE69A4E22B14CB78007C3515 /* GroceryGenius.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryGenius.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +66,7 @@
 				EE69A4FD2B14F046007C3515 /* ListRowView.swift */,
 				EEF472FD2B4C5C2000330CE5 /* ShoppingListProgressView.swift */,
 				EE7872302B1E3ED600FDD00B /* AddItemView.swift */,
+				EE4B8CD12B52BD0B006FBBED /* EditItemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				EEF472FE2B4C5C2000330CE5 /* ShoppingListProgressView.swift in Sources */,
 				EE69A4E82B14CB78007C3515 /* ShoppingListView.swift in Sources */,
 				EE69A4FE2B14F046007C3515 /* ListRowView.swift in Sources */,
+				EE4B8CD22B52BD0B006FBBED /* EditItemView.swift in Sources */,
 				EE69A4E62B14CB78007C3515 /* GroceryGeniusApp.swift in Sources */,
 				EE6115E82B4467070043736A /* ListViewModel.swift in Sources */,
 				EE6115EB2B48440E0043736A /* Color.swift in Sources */,

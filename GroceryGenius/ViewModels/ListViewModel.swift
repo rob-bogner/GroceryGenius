@@ -12,6 +12,7 @@ import Foundation // Used for basic data handling and ObservableObject.
 class ListViewModel: ObservableObject {
     
     @Published var items: [ItemModel] = [] // Holds an array of ItemModel representing each item in the ListView.
+    @Published var selectedItem: ItemModel? // Holds the selected item from the ListView
     
     init() {
         getItems() // Initial fetch of items.
@@ -48,6 +49,12 @@ class ListViewModel: ObservableObject {
             }
     }
     
+    func updateItem(item: ItemModel) {
+        if let index = items.firstIndex(where: { $0.id == item.id }) {
+            items[index] = item.updateCompletion()
+        }
+    }
+    
     /// Adds a new item to the list with given details.
     /// - Parameters:
     ///   - image: (Optional) The image string reference of the item.
@@ -67,4 +74,13 @@ class ListViewModel: ObservableObject {
             items[index] = item.updateCompletion()
         }
     }
+    
+    /// Updates the properties of an item.
+    /// Updates the `name`, `units`, `measure`, `price`  properties of the item with the given ID.
+    func saveItem(updatedItem: ItemModel) {
+        if let index = items.firstIndex(where: { $0.id == updatedItem.id }) {
+            items[index] = updatedItem
+        }
+    }
+
 }
