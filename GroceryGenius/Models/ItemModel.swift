@@ -15,19 +15,19 @@ struct ItemModel: Hashable, Identifiable {
     let id: String
 
     // Optional property for an image reference, e.g., a filename or URL string.
-    private(set) var image: String?
+    private(set) var image: String
 
     // The name of the item, e.g., "Milk". Central to identifying the item in the list.
     private(set) var  name: String
 
     // Optional property representing the number of units for the item, e.g., 3. Useful for quantity tracking.
-    private(set) var  units: Int?
+    private(set) var  units: Int
 
     // Optional property for the measurement unit, e.g., "Liters". Adds more detail to the item description.
-    private(set) var  measure: String?
+    private(set) var  measure: String
 
     // Optional property representing the price of the item. Important for budgeting and cost tracking.
-    private(set) var  price: Double?
+    private(set) var  price: Double
 
     // Boolean flag indicating whether the item has been checked off in the list. Helps track completion.
     let isChecked: Bool
@@ -47,11 +47,11 @@ struct ItemModel: Hashable, Identifiable {
     ///   - isChecked: The boolean flag indicating if the item is checked off.
     init(id: String = UUID().uuidString, image: String?, name: String, units: Int?, measure: String?, price: Double?, isChecked: Bool) {
         self.id = id
-        self.image = image
+        self.image = image ?? ""
         self.name = name
-        self.units = units
-        self.measure = measure
-        self.price = price
+        self.units = units ?? 0
+        self.measure = measure ?? ""
+        self.price = price ?? 0
         self.isChecked = isChecked
     }
     
