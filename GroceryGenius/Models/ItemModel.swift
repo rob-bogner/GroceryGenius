@@ -55,27 +55,21 @@ struct ItemModel: Hashable, Identifiable {
         self.isChecked = isChecked
     }
     
-    /// Toggles the `isChecked` state of the item.
-    /// Useful for marking an item as completed or not.
-    /// - Returns: A new `ItemModel` instance with the `isChecked` state inverted.
-    func updateCompletion() -> ItemModel {
-        return ItemModel(id: id, image: image, name: name, units: units, measure: measure, price: price, isChecked: !isChecked)
-    }
-    
     /// Updates the item with new provided values.
+    /// Allows selectively updating any of the properties.
     /// - Parameters:
-    ///   - newImage: The updated image reference.
-    ///   - newName: The updated name of the item.
-    ///   - newUnits: The updated number of units.
-    ///   - newMeasure: The updated measurement unit.
-    ///   - newPrice: The updated price.
-    ///   - newIsChecked: The updated checked status.
-    mutating func updateItem(newImage: String?, newName: String, newUnits: Int?, newMeasure: String?, newPrice: Double?, newIsChecked: Bool) {
-            self.image = newImage ?? self.image
-            self.name = newName
-            self.units = newUnits ?? self.units
-            self.measure = newMeasure ?? self.measure
-            self.price = newPrice ?? self.price
-            self.isChecked = newIsChecked
-        }
+    ///   - newImage: The updated image reference (optional).
+    ///   - newName: The updated name of the item (optional).
+    ///   - newUnits: The updated number of units (optional).
+    ///   - newMeasure: The updated measurement unit (optional).
+    ///   - newPrice: The updated price (optional).
+    ///   - newIsChecked: The updated checked status (optional).
+    mutating func updateItem(newImage: String? = nil, newName: String? = nil, newUnits: Int? = nil, newMeasure: String? = nil, newPrice: Double? = nil, newIsChecked: Bool? = nil) {
+            if let newImage = newImage { self.image = newImage }
+            if let newName = newName { self.name = newName }
+            if let newUnits = newUnits { self.units = newUnits }
+            if let newMeasure = newMeasure { self.measure = newMeasure }
+            if let newPrice = newPrice { self.price = newPrice }
+            if let newIsChecked = newIsChecked { self.isChecked = newIsChecked }
+    }
 }

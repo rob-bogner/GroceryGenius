@@ -49,9 +49,20 @@ class ListViewModel: ObservableObject {
             }
     }
     
-    func updateItem(item: ItemModel) {
+    /// Updates the properties of an item in the list.
+    /// - Parameters:
+    ///   - item: The `ItemModel` to be updated.
+    ///   - newImage: New image string reference.
+    ///   - newName: New name of the item.
+    ///   - newUnits: New number of units.
+    ///   - newMeasure: New measurement unit.
+    ///   - newPrice: New price of the item.
+    ///   - newIsChecked: New checked status.
+    func updateItem(item: ItemModel, newImage: String?, newName: String, newUnits: Int?, newMeasure: String?, newPrice: Double?, newIsChecked: Bool) {
         if let index = items.firstIndex(where: { $0.id == item.id }) {
-            items[index] = item.updateCompletion()
+            var updatedItem = item
+            updatedItem.updateItem(newImage: newImage, newName: newName, newUnits: newUnits, newMeasure: newMeasure, newPrice: newPrice, newIsChecked: newIsChecked)
+            items[index] = updatedItem
         }
     }
     
@@ -67,19 +78,22 @@ class ListViewModel: ObservableObject {
         items.append(newItem)
     }
     
-    /// Updates the checked status of an item.
-    /// Toggles the `isChecked` property of the item with the given ID.
+    /// Toggles the checked status of an item in the list.
+    /// - Parameter item: The `ItemModel` whose checked status is to be toggled.
     func toggleItemChecked(item: ItemModel) {
         if let index = items.firstIndex(where: { $0.id == item.id }) {
-            items[index] = item.updateCompletion()
+            var updatedItem = item
+            updatedItem.updateItem(newIsChecked: !item.isChecked)
+            items[index] = updatedItem
         }
     }
+
     
-    /// Updates the properties of an item.
-    /// Updates the `name`, `units`, `measure`, `price`  properties of the item with the given ID.
+    /// Saves updated properties of an item in the list.
+    /// - Parameter updatedItem: The `ItemModel` with updated properties to be saved.
     func saveItem(updatedItem: ItemModel) {
         if let index = items.firstIndex(where: { $0.id == updatedItem.id }) {
-            items[index] = updatedItem
+            items[index].updateItem(newImage: updatedItem.image, newName: updatedItem.name, newUnits: updatedItem.units, newMeasure: updatedItem.measure, newPrice: updatedItem.price, newIsChecked: updatedItem.isChecked)
         }
     }
 
