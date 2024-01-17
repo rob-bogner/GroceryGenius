@@ -1,10 +1,10 @@
 /*
-GroceryGenius
-ListRowView.swift
-Created by Robert Bogner on 27.11.23.
-
-Defines the appearance and behavior of a single row in the grocery list.
-*/
+ GroceryGenius
+ ListRowView.swift
+ Created by Robert Bogner on 27.11.23.
+ 
+ Defines the appearance and behavior of a single row in the grocery list.
+ */
 
 import SwiftUI
 
@@ -12,13 +12,13 @@ import SwiftUI
 struct ListRowView: View {
     
     let item: ItemModel // The item model that this row represents.
-
+    
     var body: some View {
         ZStack {
             Color.theme.background.ignoresSafeArea() // Sets the background color of the row.
             HStack(alignment: .top) {
                 itemImageView // Displays the image of the item.
-
+                
                 VStack(alignment: .leading) {
                     itemNameView // Displays the name of the item.
                     Spacer()
@@ -32,24 +32,17 @@ struct ListRowView: View {
             .cornerRadius(10)
         }
     }
-
+    
     /// View for displaying the image of the item.
     private var itemImageView: some View {
-        Group {
-            if let imageName = item.image {
-                Image(imageName)
-                    .resizable()
-            } else {
-                Image(systemName: "photo")
-                    .resizable()
-            }
-        }
-        .scaledToFit()
-        .frame(width: 50, height: 50)
-        .cornerRadius(5)
-        .padding(10)
+        Image(item.image.isEmpty ? "defaultImage" : item.image) // Replace "defaultImage" with your default image asset name if the image string is empty
+            .resizable()
+            .scaledToFit()
+            .frame(width: 50, height: 50)
+            .cornerRadius(5)
+            .padding(10)
     }
-
+    
     /// View for displaying the name of the item, with strikethrough if checked.
     private var itemNameView: some View {
         Text(item.name)
@@ -57,23 +50,16 @@ struct ListRowView: View {
             .strikethrough(item.isChecked, color: item.isChecked ? Color.black : .none)
             .frame(alignment: .leading)
     }
-
+    
     /// View for displaying additional details like units and price of the item.
     private var itemDetailsView: some View {
         HStack {
-            if let units = item.units, let measure = item.measure {
-                Text("\(units) \(measure)")
-                    .frame(alignment: .leading)
-            } else {
-                Text("")
-                    .frame(alignment: .leading)
-            }
+            Text("\(item.units) \(item.measure)") // Units and measure will always have a value
+                .frame(alignment: .leading)
             
             Spacer()
             
-            if let price = item.price {
-                Text("€ \(String(format: "%.2f", price))")
-            }
+            Text("€ \(String(format: "%.2f", item.price))") // Price will always have a value
         }
         .font(.subheadline)
     }

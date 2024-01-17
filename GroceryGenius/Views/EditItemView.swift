@@ -23,9 +23,9 @@ struct EditItemView: View {
         self.item = item
         // Initializing states with the current values of the item properties.
         _editName = State(initialValue: item.name)
-        _editUnits = State(initialValue: item.units.map { String($0) } ?? "")
-        _editMeasure = State(initialValue: item.measure ?? "")
-        _editPrice = State(initialValue: item.price.map { String($0) } ?? "")
+        _editUnits = State(initialValue: String(item.units))
+        _editMeasure = State(initialValue: item.measure)
+        _editPrice = State(initialValue: String(item.price))
     }
     
     var body: some View {
@@ -69,19 +69,19 @@ struct EditItemView: View {
     }
     
     private var editItemUnits: some View {
-        TextField("Enter item name", text: $editUnits)
+        TextField("Enter units", text: $editUnits)
             .textFieldStyle(.roundedBorder)
             .padding(.horizontal)
     }
     
     private var editItemMeasure: some View {
-        TextField("Enter item name", text: $editMeasure)
+        TextField("Enter measure", text: $editMeasure)
             .textFieldStyle(.roundedBorder)
             .padding(.horizontal)
     }
     
     private var editItemPrice: some View {
-        TextField("Enter item name", text: $editPrice)
+        TextField("Enter price", text: $editPrice)
             .textFieldStyle(.roundedBorder)
             .padding(.horizontal)
     }
