@@ -18,19 +18,19 @@ struct ItemModel: Hashable, Identifiable {
     private(set) var image: String
 
     // The name of the item, e.g., "Milk". Central to identifying the item in the list.
-    private(set) var  name: String
+    private(set) var name: String
 
     // Optional property representing the number of units for the item, e.g., 3. Useful for quantity tracking.
-    private(set) var  units: Int
+    private(set) var units: Int
 
     // Optional property for the measurement unit, e.g., "Liters". Adds more detail to the item description.
-    private(set) var  measure: String
+    private(set) var measure: String
 
     // Optional property representing the price of the item. Important for budgeting and cost tracking.
-    private(set) var  price: Double
+    private(set) var price: Double
 
     // Boolean flag indicating whether the item has been checked off in the list. Helps track completion.
-    let isChecked: Bool
+    private(set) var isChecked: Bool
     
     // Uncomment and use `aisle` if you want to include the aisle information of the item.
     // let aisle: String?
@@ -70,10 +70,12 @@ struct ItemModel: Hashable, Identifiable {
     ///   - newMeasure: The updated measurement unit.
     ///   - newPrice: The updated price.
     ///   - newIsChecked: The updated checked status.
-    /// - Returns: A new `ItemModel` instance with updated values.
-    mutating func updateItem(newImage: String?, newName: String, newUnits: Int?, newMeasure: String?, newPrice: Double?, newIsChecked: Bool) -> ItemModel {
-        // This method creates and returns a new instance of ItemModel with the updated values provided.
-        // Useful for editing and saving changes to an existing item.
-        return ItemModel(image: newImage, name: newName, units: newUnits, measure: newMeasure, price: newPrice, isChecked: newIsChecked)
-    }
+    mutating func updateItem(newImage: String?, newName: String, newUnits: Int?, newMeasure: String?, newPrice: Double?, newIsChecked: Bool) {
+            self.image = newImage ?? self.image
+            self.name = newName
+            self.units = newUnits ?? self.units
+            self.measure = newMeasure ?? self.measure
+            self.price = newPrice ?? self.price
+            self.isChecked = newIsChecked
+        }
 }
