@@ -55,7 +55,7 @@ struct AddItemView: View {
 
     /// Text field for entering the name of the new item.
     private var itemTextField: some View {
-        TextField("Enter item name here", text: $item)
+        TextField("Enter item name here, e.g. Milk", text: $item)
             .textFieldStyle(.roundedBorder)
             .padding(.horizontal)
             .padding(.bottom, 8)
@@ -70,11 +70,12 @@ struct AddItemView: View {
         }, label: {
             Text("Add item to list")
                 .padding()
-                .frame(width: 200)
+                .frame(maxWidth: .infinity)
                 .background(Color.blue.cornerRadius(10))
                 .foregroundColor(.white)
                 .font(.headline)
         })
+        .padding(.horizontal)
     }
     
     /// Function called when the add button is pressed.
