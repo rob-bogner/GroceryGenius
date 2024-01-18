@@ -63,25 +63,25 @@ struct EditItemView: View {
     }
     
     private var editItemName: some View {
-        TextField("Enter item name", text: $editName)
+        TextField("Enter item name here, e.g. Milk", text: $editName)
             .textFieldStyle(.roundedBorder)
             .padding(.horizontal)
     }
     
     private var editItemUnits: some View {
-        TextField("Enter units", text: $editUnits)
+        TextField("Enter units here, e.g. 2", text: $editUnits)
             .textFieldStyle(.roundedBorder)
             .padding(.horizontal)
     }
     
     private var editItemMeasure: some View {
-        TextField("Enter measure", text: $editMeasure)
+        TextField("Enter measure here, e.g. Liters", text: $editMeasure)
             .textFieldStyle(.roundedBorder)
             .padding(.horizontal)
     }
     
     private var editItemPrice: some View {
-        TextField("Enter price", text: $editPrice)
+        TextField("Enter price here, e.g. 1.99", text: $editPrice)
             .textFieldStyle(.roundedBorder)
             .padding(.horizontal)
     }
