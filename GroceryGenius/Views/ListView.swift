@@ -25,6 +25,8 @@ struct ListView: View {
             if let selectedItem = listViewModel.selectedItem {
                 EditItemView(item: selectedItem)
                     .environmentObject(listViewModel) // Passes the ListViewModel to the EditItemView.
+                    .presentationDetents([.height(340)])
+                    .presentationCornerRadius(15)
             }
         }
     }

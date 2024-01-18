@@ -17,7 +17,7 @@ struct EditItemView: View {
     @State private var editUnits: String // State for the edited unit count of the item.
     @State private var editMeasure: String // State for the edited measurement unit of the item.
     @State private var editPrice: String // State for the edited price of the item.
-
+    @FocusState private var editItemFocus: Bool // Focus state to manage the keyboard focus.
     
     init(item: ItemModel) {
         self.item = item
@@ -38,6 +38,11 @@ struct EditItemView: View {
             editItemPrice // TextField for editing the price.
             saveButton // Save button to store the changes.
             Spacer()
+        }
+        .onAppear() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                editItemFocus = true // Automatically focuses the text field when the view appears.
+            }
         }
     }
     
@@ -66,6 +71,7 @@ struct EditItemView: View {
         TextField("Enter item name here, e.g. Milk", text: $editName)
             .textFieldStyle(.roundedBorder)
             .padding(.horizontal)
+            .focused($editItemFocus)
     }
     
     private var editItemUnits: some View {
