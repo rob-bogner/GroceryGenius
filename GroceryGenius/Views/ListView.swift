@@ -34,7 +34,7 @@ struct ListView: View {
     /// Section displaying unchecked items.
     /// Iterates through items that are not checked and presents them using `ListRowView`.
     private var uncheckedItemsSection: some View {
-        ForEach(listViewModel.items.filter { !$0.isChecked }) { item in
+        ForEach(listViewModel.uncheckedItems) { item in
             ListRowView(item: item) // Custom view for displaying a single list item.
                 .listRowSeparator(.hidden) // Hides the row separator for a cleaner look.
                 .listRowBackground(Color.theme.background) // Sets the background color for the row.
@@ -78,7 +78,7 @@ struct ListView: View {
         Group {
             if listViewModel.checkedItemCount > 0 {
                 Section(header: Text("Checked Items")) { // Header for the checked items section.
-                    ForEach(listViewModel.items.filter { $0.isChecked }) { item in
+                    ForEach(listViewModel.checkedItems) { item in
                         ListRowView(item: item) // View for each checked list item.
                             .listRowSeparator(.hidden)
                             .listRowBackground(Color.theme.background)

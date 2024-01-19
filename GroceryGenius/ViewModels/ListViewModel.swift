@@ -36,6 +36,20 @@ class ListViewModel: ObservableObject {
         totalItemCount > 0 ? Double(checkedItemCount) / Double(totalItemCount) : 0
     }
     
+    /// Computed property that filters and returns the list of items not marked as checked.
+    /// This property helps in efficiently separating unchecked items from the complete list,
+    /// making it easier to manage and display them in the UI.
+    var uncheckedItems: [ItemModel] {
+        items.filter { !$0.isChecked }
+    }
+
+    /// Computed property that filters and returns the list of items marked as checked.
+    /// This property is used to separate checked items from the complete list,
+    /// allowing for specific handling and presentation of these items in the UI.
+    var checkedItems: [ItemModel] {
+        items.filter { $0.isChecked }
+    }
+
     /// Fetches items from MockData and append them to the list, to provide sample items in the list.
     func getItems()  {
         items.append(contentsOf: MockData.items)
