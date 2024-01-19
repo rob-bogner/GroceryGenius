@@ -40,10 +40,8 @@ struct ListView: View {
                 .listRowBackground(Color.theme.background) // Sets the background color for the row.
                 .swipeActions(allowsFullSwipe: false) {
                     // Swipe actions allow additional functionalities like edit and delete.
-                    Button {
+                    Button("Not available", systemImage: "minus.circle") {
                         print("Not available") // Placeholder action. Update as needed.
-                    } label: {
-                        Label("Not available", systemImage: "minus.circle")
                     }
                     .tint(.orange)
                     Button("Edit", systemImage: "pencil.circle") {
@@ -51,21 +49,17 @@ struct ListView: View {
                         showEditItemView = true // Triggers the presentation of the EditItemView.
                     }
                     .tint(.blue)
-                    Button(role: .destructive) {
+                    Button("Delete", systemImage: "trash.circle", role: .destructive) {
                         withAnimation {
                             listViewModel.deleteItem(item: item) // Deletes the item from the list.
                         }
-                    } label: {
-                        Label("Delete", systemImage: "trash.circle")
                     }
                 }
                 .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                    Button {
+                    Button("Check", systemImage: "checkmark.circle") {
                         withAnimation {
                             listViewModel.toggleItemChecked(item: item) // Toggles the checked status of the item.
                         }
-                    } label: {
-                        Label("Check", systemImage: "checkmark.circle")
                     }
                     .tint(.green)
                 }
@@ -83,22 +77,18 @@ struct ListView: View {
                             .listRowSeparator(.hidden)
                             .listRowBackground(Color.theme.background)
                             .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                                Button {
+                                Button("Uncheck", systemImage: "arrow.uturn.backward.circle") {
                                     withAnimation {
                                         listViewModel.toggleItemChecked(item: item) // Allows unchecking of an item.
                                     }
-                                } label: {
-                                    Label("Uncheck", systemImage: "arrow.uturn.backward.circle")
                                 }
                                 .tint(.yellow)
                             }
                             .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                                Button {
+                                Button("Delete", systemImage: "trash.circle") {
                                     withAnimation {
                                         listViewModel.deleteItem(item: item) // Enables deletion of a checked item.
                                     }
-                                } label: {
-                                    Label("Delete", systemImage: "trash.circle")
                                 }
                                 .tint(.red)
                             }
