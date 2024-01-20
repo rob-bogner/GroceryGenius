@@ -90,6 +90,7 @@ struct EditItemView: View {
         TextField("Enter price here, e.g. 1.99", text: $editPrice)
             .textFieldStyle(.roundedBorder)
             .padding(.horizontal)
+            .padding(.bottom, 8)
     }
     
     /// Button for saving the edited item to the list.
@@ -105,7 +106,7 @@ struct EditItemView: View {
                 .foregroundColor(.white)
                 .font(.headline)
         })
-        .padding()
+        .padding(.horizontal)
     }
     
     /// Function called when the save button is pressed.

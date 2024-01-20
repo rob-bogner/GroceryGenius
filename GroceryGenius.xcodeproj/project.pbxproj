@@ -23,7 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		EE4B8CD12B52BD0B006FBBED /* EditItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemView.swift; sourceTree = "<group>"; };
+		EE4B8CD12B52BD0B006FBBED /* EditItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		EE6115E72B4467070043736A /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		EE6115EA2B48440E0043736A /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		EE69A4E22B14CB78007C3515 /* GroceryGenius.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryGenius.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,9 +99,9 @@
 			isa = PBXGroup;
 			children = (
 				EE69A4E52B14CB78007C3515 /* GroceryGeniusApp.swift */,
-				EE25EDBC2B406FFA00CA090C /* Models */,
-				EE9C2B4E2B407E83009776A0 /* ViewModels */,
 				EE25EDBD2B40700500CA090C /* Views */,
+				EE9C2B4E2B407E83009776A0 /* ViewModels */,
+				EE25EDBC2B406FFA00CA090C /* Models */,
 				EE6115E92B4843D80043736A /* Extensions */,
 				EEBF14F82B49B74C0063BC9D /* MockData */,
 				EE69A4E92B14CB79007C3515 /* Assets.xcassets */,
